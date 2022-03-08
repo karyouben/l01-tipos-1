@@ -61,6 +61,12 @@ public class Cancion {
 	}
 
 	public void setDuracion(Duration duracion) {
+//		if (duracion.toSeconds()<0) {
+//		throw new IllegalArgumentException("");
+//	}
+	if (duracion.compareTo(Duration.ZERO)<0) {
+		throw new IllegalArgumentException("Cancion.setDuracion: la duración debe ser mayor o igual que cero" + duracion);
+	}
 		this.duracion = duracion;
 	}
 
