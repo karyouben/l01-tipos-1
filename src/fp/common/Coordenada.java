@@ -1,6 +1,12 @@
 package fp.common;
 
+import fp.utiles.Checkers;
+
 public record Coordenada(Double latitud, Double longitud) {
+	public Coordenada{
+		Checkers.check("La latitud debe estar comprendida entre -90 y 90 "+ latitud, latitud>=-90 && latitud<=90);
+		Checkers.check("La longitud debe estar comprendida entre -180 y 180 "+ longitud, longitud >=-180 && longitud <=180 );
+	}
 	
 	private final static Double RADIO_TIERRA = 6371.0;
 	public Double getDistancia(Coordenada c) {
